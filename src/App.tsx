@@ -1,25 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { CssBaseline } from "@mui/joy";
+import { CacheProvider } from "@emotion/react";
+import { ToastContainer } from "react-toastify";
+import createEmotionCache from "./utils/createEmotionCache";
+import Router from "./routes/Router";
+
+import "./assets/global.css";
+import "react-toastify/dist/ReactToastify.min.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CacheProvider value={createEmotionCache()}>
+      <CssBaseline />
+      <Router />
+      <ToastContainer limit={3} autoClose={10000} />
+    </CacheProvider>
   );
 }
 
